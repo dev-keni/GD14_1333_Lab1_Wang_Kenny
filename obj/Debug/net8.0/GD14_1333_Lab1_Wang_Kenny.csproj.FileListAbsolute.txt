@@ -1,0 +1,14 @@
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\bin\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.exe
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\bin\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.deps.json
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\bin\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.runtimeconfig.json
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\bin\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.dll
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\bin\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.pdb
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\obj\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.GeneratedMSBuildEditorConfig.editorconfig
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\obj\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.AssemblyInfoInputs.cache
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\obj\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.AssemblyInfo.cs
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\obj\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.csproj.CoreCompileInputs.cache
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\obj\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.dll
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\obj\Debug\net8.0\refint\GD14_1333_Lab1_Wang_Kenny.dll
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\obj\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.pdb
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\obj\Debug\net8.0\GD14_1333_Lab1_Wang_Kenny.genruntimeconfig.cache
+E:\GA3-1333\GD14_1333_Lab1_Wang_Kenny\obj\Debug\net8.0\ref\GD14_1333_Lab1_Wang_Kenny.dll

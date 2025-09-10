@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "GD14_1333_Lab1_Wang_Kenny/1.0.0": {
+        "runtime": {
+          "GD14_1333_Lab1_Wang_Kenny.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GD14_1333_Lab1_Wang_Kenny/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
