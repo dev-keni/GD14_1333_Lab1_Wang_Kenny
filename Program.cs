@@ -15,7 +15,7 @@
             DisplayIt(64);
             DisplayIt(100);
             DisplayIt(255);
-            Console.WriteLine("Goodbye! Kenny Wang September 3rd, 2025");
+            Console.WriteLine("Goodbye, World! Kenny Wang September 3rd, 2025");
         }
         private static void DisplayIt(int deci)
         {
