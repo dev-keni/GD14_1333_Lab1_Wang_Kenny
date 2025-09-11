@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab1_Wang_Kenny\\GD14_1333_Lab1_Wang_Kenny.csproj",
-      "projectName": "GD14_1333_Lab1_Wang_Kenny",
-      "projectPath": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab1_Wang_Kenny\\GD14_1333_Lab1_Wang_Kenny.csproj",
+      "projectUniqueName": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\Lab3.csproj",
+      "projectName": "Lab3",
+      "projectPath": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\Lab3.csproj",
       "packagesPath": "C:\\Users\\kenny\\.nuget\\packages\\",
-      "outputPath": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab1_Wang_Kenny\\obj\\",
+      "outputPath": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
