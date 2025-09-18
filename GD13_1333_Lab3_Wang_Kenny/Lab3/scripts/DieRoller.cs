@@ -8,21 +8,21 @@ namespace Lab3.scripts
 {
     internal class DieRoller
     {
-        public int Roll()
-        { 
+        public int Roll(string input)
+        {
+            int num;
             //new random
             Random random = new Random();
 
-            //roll each die
-            int d6 = random.Next(1,6);
-            int d8 = random.Next(1,8);
-            int d12 = random.Next(1,12);
-            int d20 = random.Next(1,20);
+            //remove "d" from the input string so it can be converted to int
+            string cleanedInput = input.Replace("d", "");
+            bool successfullyParsed = int.TryParse(cleanedInput, out num);
 
-            //add every die
-            int total = d6 + d8 + d12 + d20;
-
-            return total;
+            //roll selected die
+            int result = random.Next(1,num+1);
+            
+            return result;
         }
+
     }
 }

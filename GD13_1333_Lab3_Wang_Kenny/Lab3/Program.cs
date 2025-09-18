@@ -7,20 +7,14 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome, Kenny! September 14th, 2025");
+            Console.WriteLine("Welcome, Kenny! September 17th, 2025");
 
             GameManager manager = new GameManager();
             manager.Play();
 
-            Console.WriteLine("+ adds");
-            Console.WriteLine("- subtracts");
-            Console.WriteLine("/ divides");
-            Console.WriteLine("* multiplies");
-            Console.WriteLine("++ adds 1");
-            Console.WriteLine("-- subtracts 1");
-            Console.WriteLine("% gets the remainder of two variables");
 
             Console.WriteLine("Goodbye!");
+
 
             //Let each player pick which die to use
             //Remove the chosen dice from the players inventory
