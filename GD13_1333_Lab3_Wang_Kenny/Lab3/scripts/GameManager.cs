@@ -9,10 +9,14 @@ namespace Lab3.scripts
 {
     internal class GameManager
     {
+        
         DieRoller dieRoller = new DieRoller();
+
+        //Create data for player and CPU
         Player player = new Player();
         Player cpu = new Player();
 
+        //Variables
         bool PlayerFirst;
         int PlayerResult;
         int CPUResult;
@@ -21,6 +25,7 @@ namespace Lab3.scripts
 
         public void Play()
         {
+            //Get player's username
             Console.WriteLine("Enter username: ");
             string userName = Console.ReadLine();
             if (userName != null || userName != "")
@@ -43,8 +48,10 @@ namespace Lab3.scripts
             string choice="";
             int plrChoice = 0;
 
+            //Get the player input
             Console.WriteLine("Heads or Tails?");
             string playersPick = Console.ReadLine();
+
             //validate the player's answer
             if (playersPick != null && playersPick == "Heads" || playersPick == "Tails")
             {
@@ -58,7 +65,7 @@ namespace Lab3.scripts
                     plrChoice = 2;
                 }
 
-                //roll a dice of 2, basically heads/tails
+                //roll a dice of 2, basically heads/tails. 1 is heads, 2 is tails
                 int result = dieRoller.Roll("d2");
                 if (result == 1)
                 {
@@ -69,6 +76,7 @@ namespace Lab3.scripts
                     choice = "Tails";
                 }
 
+                //compare the player choice to the generated roll
                 if (result == plrChoice)
                 {
                     Console.WriteLine("The coin flipped "+choice+"! You get to go first!");
@@ -84,6 +92,7 @@ namespace Lab3.scripts
             }
             else
             {
+                //For if the player ever inputted anything other than Heads/Tails
                 Console.WriteLine("Error. Try again.");
                 FlipACoin();
             }
@@ -91,14 +100,19 @@ namespace Lab3.scripts
 
         private void PlayerTurn()
         {
+            //Get player input and display all available choices
             Console.WriteLine("Select a dice to play: "+ string.Join(", ", player.Inventory));
             string playersPick = Console.ReadLine();
+
+            //Check validity of player's choice
             if (playersPick != null && player.Inventory.Contains(playersPick))
             {
                 int result = dieRoller.Roll(playersPick);
                 PlayerResult = result;
                 PlayerDice = playersPick;
                 Console.WriteLine(player.UserName + " has picked their dice.");
+
+                //Check turn order
                 if (PlayerFirst)
                 {
                     CPUTurn();
@@ -119,18 +133,22 @@ namespace Lab3.scripts
         {
             Random selection = new Random();
 
+            //picks a random possible die from the "inventory"
             int randomIndex = selection.Next(cpu.Inventory.Length);
 
             string choice = cpu.Inventory[randomIndex];
 
             CPUDice = choice;
 
+            //Use dieroller to get the result
             int result = dieRoller.Roll(choice);
 
+            //store the result
             CPUResult = result;
 
             Console.WriteLine("CPU has picked their dice.");
 
+            //If player went first, compare the results. If not, let the player pick a dice
             if(PlayerFirst)
             {
                 Compare();
@@ -145,20 +163,25 @@ namespace Lab3.scripts
         {
             Console.WriteLine(player.UserName + " rolled " + PlayerDice + " and got " + PlayerResult + ".");
             Console.WriteLine("CPU rolled " + CPUDice + " and got " + CPUResult + ".");
+            //Compare the die to see who wins, if its the same number, then Tie
             if (PlayerResult > CPUResult)
             {
-                Console.WriteLine(player.UserName + " wins!");
+                player.Score += 1;
+                Console.WriteLine(player.UserName + " wins! You get 1 score! The score is now "+player.UserName+": "+player.Score+" | CPU: "+ cpu.Score);
             }
             else if (PlayerResult == CPUResult)
             {
-                Console.WriteLine("Tied!");
+                Console.WriteLine("Tied! Play again!");
+                FlipACoin();
             }
             else
             {
-                Console.WriteLine("CPU wins!");
+                cpu.Score += 1;
+                Console.WriteLine("CPU wins! They get 1 score! The score is now " + player.UserName + ": " + player.Score + " | CPU: " + cpu.Score);
             }
         }
 
+        //Leftovers from class
         private void OnPointAcquired()
         {
             string gainedMessage = "You gained a point!";
