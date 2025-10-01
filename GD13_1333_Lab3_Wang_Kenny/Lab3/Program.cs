@@ -13,9 +13,10 @@ namespace Lab3
             manager.Play();
 
 
-            Console.WriteLine("Goodbye!");
+            //Console.WriteLine("Goodbye!");
 
-
+            //Welcome the user
+            //Ask them for their username
             //Let each player pick which die to use
             //Remove the chosen dice from the players inventory
             //Calculate each players dice rolls (pick random number for each player according to dice), whichever player rolls the higher number gets 1 score

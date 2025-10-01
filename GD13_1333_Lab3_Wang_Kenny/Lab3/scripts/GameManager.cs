@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Net.Security;
 using System.Text;
@@ -15,23 +17,28 @@ namespace Lab3.scripts
         //Create data for player and CPU
         Player player = new Player();
         Player cpu = new Player();
-
+        
         //Variables
         bool PlayerFirst;
-        int PlayerResult;
-        int CPUResult;
-        string PlayerDice;
-        String CPUDice;
+        bool inGame = false;
+        int PlayerResult, CPUResult;
+        string PlayerDice, CPUDice;
+        List<Player> TurnOrder = new List<Player>(2);
+        int TurnIndex = 0;
 
         public void Play()
         {
+            cpu.isBot = true;
             //Get player's username
-            Console.WriteLine("Enter username: ");
+            Console.WriteLine("\r\n♫.•°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫\r\n───▄▄▄▄▄▄\r\n─▄▀░░░░░░▀▄░██░██ █████ ██░░ ██░░ █████\r\n▐░▄▄▄░░▐▀▌░▌██▄██ ██▄▄▄ ██░░ ██░░ ██░██\r\n▐░░░░░░░░░░▌██▀██ ██▀▀▀ ██░░ ██░░ ██░██\r\n▐░░▀▄░░▄▀░░▌██░██ █████ ████ ████ █████\r\n─▀▄░░▀▀░░▄▀\r\n───▀▀▀▀▀▀---\r\n♫.•°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫");
+            Console.WriteLine("Welcome! To Dice Off! You will be facing off against my evil dice rolling computer program. First to 5 wins!");
+            Console.WriteLine("Please enter your username: ");
             string userName = Console.ReadLine();
             if (userName != null || userName != "")
             {
                 player.UserName = userName;
                 Console.WriteLine("Your username is " + player.UserName);
+                inGame = true;
                 FlipACoin();
             }
             else
@@ -55,7 +62,7 @@ namespace Lab3.scripts
             //validate the player's answer
             if (playersPick != null && playersPick == "Heads" || playersPick == "Tails")
             {
-                //convert player choice to int so it can be compared to dieRoller.Roll's return (int).
+            //convert player choice to int so it can be compared to dieRoller.Roll's return (int).
                 if (playersPick == "Heads")
                 {
                     plrChoice = 1;
@@ -65,7 +72,7 @@ namespace Lab3.scripts
                     plrChoice = 2;
                 }
 
-                //roll a dice of 2, basically heads/tails. 1 is heads, 2 is tails
+            //roll a dice of 2, basically heads/tails. 1 is heads, 2 is tails
                 int result = dieRoller.Roll("d2");
                 if (result == 1)
                 {
@@ -76,93 +83,62 @@ namespace Lab3.scripts
                     choice = "Tails";
                 }
 
-                //compare the player choice to the generated roll
+            //compare the player choice to the generated roll
                 if (result == plrChoice)
                 {
                     Console.WriteLine("The coin flipped "+choice+"! You get to go first!");
-                    PlayerFirst = true;
-                    PlayerTurn();
+                    TurnOrder.Insert(0, player);
+                    TurnOrder.Insert(1, cpu);
+                    inGame = true;
+                    GameLoop();
                 }
                 else
                 {
                     Console.WriteLine("The coin flipped " + choice + ". CPU gets to go first.");
-                    PlayerFirst = false;
-                    CPUTurn();
+                    TurnOrder.Insert(0, cpu);
+                    TurnOrder.Insert(1, player);
+                    inGame = true;
+                    GameLoop();
                 }
             }
             else
             {
-                //For if the player ever inputted anything other than Heads/Tails
+            //For if the player ever inputted anything other than Heads/Tails
                 Console.WriteLine("Error. Try again.");
                 FlipACoin();
             }
         }
 
-        private void PlayerTurn()
+        //Loop the game
+        private void GameLoop()
         {
-            //Get player input and display all available choices
-            Console.WriteLine("Select a dice to play: "+ string.Join(", ", player.Inventory));
-            string playersPick = Console.ReadLine();
-
-            //Check validity of player's choice
-            if (playersPick != null && player.Inventory.Contains(playersPick))
+            while (inGame)
             {
-                int result = dieRoller.Roll(playersPick);
-                PlayerResult = result;
-                PlayerDice = playersPick;
-                Console.WriteLine(player.UserName + " has picked their dice.");
-
-                //Check turn order
-                if (PlayerFirst)
-                {
-                    CPUTurn();
-                }
-                else
-                {
-                    Compare();
-                }
-            }
-            else
-            {
-                Console.WriteLine("Invalid input. Try again.");
-                PlayerTurn();
+                CheckTurn();
+                Compare();
             }
         }
 
-        private void CPUTurn()
+        //Check the turn order
+        private void CheckTurn()
         {
-            Random selection = new Random();
-
-            //picks a random possible die from the "inventory"
-            int randomIndex = selection.Next(cpu.Inventory.Length);
-
-            string choice = cpu.Inventory[randomIndex];
-
-            CPUDice = choice;
-
-            //Use dieroller to get the result
-            int result = dieRoller.Roll(choice);
-
-            //store the result
-            CPUResult = result;
-
-            Console.WriteLine("CPU has picked their dice.");
-
-            //If player went first, compare the results. If not, let the player pick a dice
-            if(PlayerFirst)
+            if (TurnOrder[0]==player)
             {
-                Compare();
+                PlayerResult = player.Turn();
+                CPUResult = cpu.Turn();
             }
             else
             {
-                PlayerTurn();
+                CPUResult = cpu.Turn();
+                PlayerResult = player.Turn();
             }
         }
 
         private void Compare()
         {
-            Console.WriteLine(player.UserName + " rolled " + PlayerDice + " and got " + PlayerResult + ".");
-            Console.WriteLine("CPU rolled " + CPUDice + " and got " + CPUResult + ".");
+            Console.WriteLine(player.UserName + " rolled and got " + PlayerResult + ".");
+            Console.WriteLine("CPU rolled and got " + CPUResult + ".");
+
             //Compare the die to see who wins, if its the same number, then Tie
             if (PlayerResult > CPUResult)
             {
@@ -179,6 +155,25 @@ namespace Lab3.scripts
                 cpu.Score += 1;
                 Console.WriteLine("CPU wins! They get 1 score! The score is now " + player.UserName + ": " + player.Score + " | CPU: " + cpu.Score);
             }
+            //If the score reaches 5 then end the game
+            if (player.Score == 5)
+            {
+                Console.WriteLine(player.UserName + " has won!");
+                GameOver();
+            }
+            else if (cpu.Score == 5)
+            {
+                Console.WriteLine("My evil CPU has won! You lose! Hahahaha!");
+                GameOver();
+            }
+
+        }
+
+        private void GameOver()
+        {
+            inGame = false;
+            Console.WriteLine("█▀██▀█─▀██▀─▀█▀────█─────▀██▄─▀█▀─▀██▀▄█▀\r\n──██────██▄▄▄█────▄██─────██▀▄─█───███▀\r\n──██────██───█───▄█▄██────██─▀▄█───██▀█\r\n─▄██▄──▄██▄─▄█▄─▄█▄─▄██▄─▄██▄─▀█──▄██▄▀█▄\r\n\r\n───────▀█▄──▄█▀──▄█▀█▄──██───██──────────\r\n────────▀█▄▄█▀──██───██─██───██──────────\r\n──────────██────██───██─██───██──────────\r\n─────────▄██▄────▀█▄█▀───▀█▄█▀───────────");
+            Console.WriteLine("for playing. Goodbye!");
         }
 
         //Leftovers from class
