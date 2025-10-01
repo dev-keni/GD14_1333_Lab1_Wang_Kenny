@@ -10,9 +10,15 @@ namespace Lab3.scripts
     {
         public int Roll(string input)
         {
+
             int num;
             //new random
             Random random = new Random();
+
+            if (input == "???")
+            {
+                input = "d"+random.Next(1,50);
+            }
 
             //remove "d" from the input string so it can be converted to int
             string cleanedInput = input.Replace("d", "");

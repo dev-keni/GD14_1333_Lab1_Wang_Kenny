@@ -11,7 +11,7 @@ namespace Lab3.scripts
     {
         public string UserName = "";
         //Replace with List
-        List<string> Inventory = new List<string> { "d6", "d8", "d12", "d20", "d50" };
+        List<string> Inventory = new List<string> { "d6", "d8", "d12", "d20", "???" };
         public bool isBot = false;
         public int Score;
         int PlayerResult, CPUResult;
