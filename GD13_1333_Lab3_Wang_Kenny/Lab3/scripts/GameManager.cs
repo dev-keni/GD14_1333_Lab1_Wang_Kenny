@@ -19,12 +19,9 @@ namespace Lab3.scripts
         Player cpu = new Player();
         
         //Variables
-        bool PlayerFirst;
         bool inGame = false;
         int PlayerResult, CPUResult;
-        string PlayerDice, CPUDice;
         List<Player> TurnOrder = new List<Player>(2);
-        int TurnIndex = 0;
 
         public void Play()
         {
@@ -33,7 +30,7 @@ namespace Lab3.scripts
             Console.WriteLine("\r\n♫.•°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫\r\n───▄▄▄▄▄▄\r\n─▄▀░░░░░░▀▄░██░██ █████ ██░░ ██░░ █████\r\n▐░▄▄▄░░▐▀▌░▌██▄██ ██▄▄▄ ██░░ ██░░ ██░██\r\n▐░░░░░░░░░░▌██▀██ ██▀▀▀ ██░░ ██░░ ██░██\r\n▐░░▀▄░░▄▀░░▌██░██ █████ ████ ████ █████\r\n─▀▄░░▀▀░░▄▀\r\n───▀▀▀▀▀▀---\r\n♫.•°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫");
             Console.WriteLine("Welcome! To Dice Off! You will be facing off against my evil dice rolling computer program. First to 5 wins!");
             Console.WriteLine("Please enter your username: ");
-            string userName = Console.ReadLine();
+            string? userName = Console.ReadLine();
             if (userName != null || userName != "")
             {
                 player.UserName = userName;
@@ -47,7 +44,6 @@ namespace Lab3.scripts
                 Play();
             }
 
-            //Console.WriteLine(dieRoller.Roll().ToString());
         }
 
         private void FlipACoin() 

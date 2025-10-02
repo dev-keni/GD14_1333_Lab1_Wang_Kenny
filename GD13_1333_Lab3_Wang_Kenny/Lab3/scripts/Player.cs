@@ -42,7 +42,7 @@ namespace Lab3.scripts
                 
                 //Get player input and display all available choices
                 Console.WriteLine("Select a dice to play: " + string.Join(", ", Inventory));
-                string playersPick = Console.ReadLine();
+                string? playersPick = Console.ReadLine();
                 int result = 0;
                 //Check validity of player's choice
                 if (playersPick != null && Inventory.Contains(playersPick))
