@@ -22,6 +22,41 @@ namespace Lab3.scripts
         bool inGame = false;
         int PlayerResult, CPUResult;
         List<Player> TurnOrder = new List<Player>(2);
+        List<Room> Row1 = new List<Room>();
+        List<Room> Row2 = new List<Room>();
+        List<Room> Row3 = new List<Room>();
+
+        private void GenerateMap()
+        {
+            List<Room> CurrentList = Row1;
+            for (int i = 0; i < 4; i++)
+            {
+                if (i == 1)
+                {
+                    CurrentList = Row1;
+                }
+                else if (i == 2)
+                {
+                    CurrentList = Row2;
+                }
+                else if (i == 3)
+                {
+                    CurrentList = Row3;
+                }
+                for (int j = 0; j < 4; j++)
+                {
+                    int result = dieRoller.Roll("d2");
+                    if (result == 1)
+                    {
+                        //Row1.Insert(j, );
+                    }
+                    else if (result == 2)
+                    {
+                        
+                    }
+                }
+            }
+        }
 
         public void Play()
         {
