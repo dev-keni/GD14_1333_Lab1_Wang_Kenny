@@ -11,13 +11,22 @@ namespace Lab3.scripts
     {
         public string UserName = "";
         //Replace with List
-        List<string> Inventory = new List<string> { "d6", "d8", "d12", "d20", "???" };
-        List<string> RoomsBeen = new List<string> { };
+        public List<Items> Inventory = new List<Items> { new Revolver(), new PipeBomb() };
 
         public bool isBot = false;
         public int Score;
         int PlayerResult, CPUResult;
         DieRoller dieRoller = new DieRoller();
+
+        private void RemoveItem(string itemToRemove)
+        {
+            bool removed = Inventory.Remove(Revolver());
+        }
+
+        public void GenerateItem()
+        {
+
+        }
 
         public int Turn()
         {
@@ -28,10 +37,10 @@ namespace Lab3.scripts
                 //picks a random possible die from the "inventory"
                 int randomIndex = selection.Next(Inventory.Count);
 
-                string choice = Inventory[randomIndex];
+                Items choice = Inventory[randomIndex];
 
                 //Use dieroller to get the result
-                int result = dieRoller.Roll(choice);
+                int result = dieRoller.Roll(choice.ReturnDamage());
 
                 //store the result
                 CPUResult = result;

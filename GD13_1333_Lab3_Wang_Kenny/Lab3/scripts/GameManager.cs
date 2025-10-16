@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,56 +23,57 @@ namespace Lab3.scripts
         bool inGame = false;
         int PlayerResult, CPUResult;
         List<Player> TurnOrder = new List<Player>(2);
-        List<Room> Row1 = new List<Room>();
-        List<Room> Row2 = new List<Room>();
-        List<Room> Row3 = new List<Room>();
+        Room[,] mapGrid = new Room[3,3];
+        Room? currentRoom;
+        int currentX, currentY;
 
         private void GenerateMap()
         {
-            List<Room> CurrentList = Row1;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
-                if (i == 1)
-                {
-                    CurrentList = Row1;
-                }
-                else if (i == 2)
-                {
-                    CurrentList = Row2;
-                }
-                else if (i == 3)
-                {
-                    CurrentList = Row3;
-                }
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < 3; j++)
                 {
                     int result = dieRoller.Roll("d2");
                     if (result == 1)
                     {
-                        //Row1.Insert(j, );
+                        mapGrid[i,j] = new EncounterRoom();
                     }
                     else if (result == 2)
                     {
-                        
+                        mapGrid[i,j] = new TreasureRoom();
                     }
                 }
             }
         }
 
+        private void DisplayMap()
+        {
+
+        }
+
         public void Play()
         {
+            GenerateMap();
+            currentRoom = mapGrid[1,1];
+            currentX = 1;
+            currentY = 1;
             cpu.isBot = true;
             //Get player's username
             Console.WriteLine("\r\n♫.•°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫\r\n───▄▄▄▄▄▄\r\n─▄▀░░░░░░▀▄░██░██ █████ ██░░ ██░░ █████\r\n▐░▄▄▄░░▐▀▌░▌██▄██ ██▄▄▄ ██░░ ██░░ ██░██\r\n▐░░░░░░░░░░▌██▀██ ██▀▀▀ ██░░ ██░░ ██░██\r\n▐░░▀▄░░▄▀░░▌██░██ █████ ████ ████ █████\r\n─▀▄░░▀▀░░▄▀\r\n───▀▀▀▀▀▀---\r\n♫.•°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫");
-            Console.WriteLine("Welcome! To Dice Off! You will be facing off against my evil dice rolling computer program. First to 5 wins!");
-            Console.WriteLine("Please enter your username: ");
+            Console.WriteLine(" ");
+            Console.WriteLine("Welcome! To Apocalyptic Search! You find yourself in an abandoned home in an apocalypse.");
+            Console.WriteLine(" ");
+            Console.WriteLine("Please enter your name: ");
+
             string? userName = Console.ReadLine();
-            if (userName != null || userName != "")
+            if (userName != null || userName != "") //Legit check the name
             {
                 player.UserName = userName;
-                Console.WriteLine("Your username is " + player.UserName);
+
+                PrintText("green","Welcome, " + player.UserName+"!");
+
                 inGame = true;
-                FlipACoin();
+                Navigate();
             }
             else
             {
@@ -81,6 +83,85 @@ namespace Lab3.scripts
 
         }
 
+        private void Navigate()
+        {
+            PrintText("blue","What would you like to do, " + player.UserName + "?");
+            Console.WriteLine(" ");
+            Console.WriteLine("Move: n e s w");
+            Console.WriteLine("Search: search");
+            Console.WriteLine("Inventory: inv");
+            string? answer = Console.ReadLine();
+            if (answer != null && answer == "n" || answer == "e" || answer == "s" || answer == "w")
+            {
+                switch (answer)
+                {
+                    case "n":
+                        CheckRoom("y", 1);
+                    break;
+                    case "e":
+                        CheckRoom("x", 1);
+                    break;
+                    case "s":
+                        CheckRoom("y", -1);
+                        break;
+                    case "w":
+                        CheckRoom("x", -1);
+                        break;
+                }
+            }
+            else if (answer != null && answer == "search")
+            {
+                PrintText("red", "Theres nothing here.");
+                //Make the Player object insert new item VIA Room.cs's OnRoomSearch, then match an item from Items.cs lmao
+                Navigate();
+            }
+            else if (answer != null && answer == "inv")
+            {
+                PrintText("yellow", "You looked in your backpack and you currently have: " + string.Join(", ", player.Inventory));
+                Navigate();
+            }
+        }
+
+        private void CheckRoom(string dir, int increment)
+        {
+            if (dir == "y")
+            {
+                if (currentY + increment < 3 && currentY+increment >= 0) //HARDCODED INDEX!!! D:
+                {
+                    currentY += increment;
+                    currentRoom = mapGrid[currentX, currentY];
+                    if (mapGrid[currentX, currentY].Enter() == true)
+                    {
+                        FlipACoin();
+                    }
+                    Navigate();
+                }
+                else
+                {
+                    PrintText("red", "There is no exit in that direction.");
+                    Navigate();
+                }
+            }
+            else if(dir == "x")
+            {
+                if (currentX + increment < 3 && currentX + increment >= 0) //HARDCODED INDEX!!! D:
+                {
+                    currentX += increment;
+                    currentRoom = mapGrid[currentX, currentY];
+                    if (mapGrid[currentX, currentY].Enter() == true)
+                    {
+                        FlipACoin();
+                    }
+                    Navigate();
+                }
+                else
+                {
+                    PrintText("red", "There is no exit in that direction.");
+                    Navigate();
+                }
+            }
+        }
+
         private void FlipACoin() 
         {
             string choice="";
@@ -88,7 +169,7 @@ namespace Lab3.scripts
 
             //Get the player input
             Console.WriteLine("Heads or Tails?");
-            string playersPick = Console.ReadLine();
+            string? playersPick = Console.ReadLine();
 
             //validate the player's answer
             if (playersPick != null && playersPick == "Heads" || playersPick == "Tails")
@@ -125,7 +206,7 @@ namespace Lab3.scripts
                 }
                 else
                 {
-                    Console.WriteLine("The coin flipped " + choice + ". CPU gets to go first.");
+                    Console.WriteLine("The coin flipped " + choice + ". The enemy gets to go first.");
                     TurnOrder.Insert(0, cpu);
                     TurnOrder.Insert(1, player);
                     inGame = true;
@@ -167,8 +248,8 @@ namespace Lab3.scripts
 
         private void Compare()
         {
-            Console.WriteLine(player.UserName + " rolled and got " + PlayerResult + ".");
-            Console.WriteLine("CPU rolled and got " + CPUResult + ".");
+            Console.WriteLine(player.UserName + " attacked and landed " + PlayerResult + " damage.");
+            Console.WriteLine("The enemy attacks and does " + CPUResult + " damage.");
 
             //Compare the die to see who wins, if its the same number, then Tie
             if (PlayerResult > CPUResult)
@@ -178,23 +259,23 @@ namespace Lab3.scripts
             }
             else if (PlayerResult == CPUResult)
             {
-                Console.WriteLine("Tied! Play again!");
+                Console.WriteLine("You both fail to attack eachother meaningfully!");
                 FlipACoin();
             }
             else
             {
                 cpu.Score += 1;
-                Console.WriteLine("CPU wins! They get 1 score! The score is now " + player.UserName + ": " + player.Score + " | CPU: " + cpu.Score);
+                Console.WriteLine("Bandit wins! They get 1 score! The score is now " + player.UserName + ": " + player.Score + " | CPU: " + cpu.Score);
             }
             //If the score reaches 5 then end the game
             if (player.Score == 5)
             {
-                Console.WriteLine(player.UserName + " has won!");
+                Console.WriteLine(player.UserName + " murdered the bandit!");
                 GameOver();
             }
             else if (cpu.Score == 5)
             {
-                Console.WriteLine("My evil CPU has won! You lose! Hahahaha!");
+                Console.WriteLine("The bandit kills you and you die.");
                 GameOver();
             }
 
@@ -207,20 +288,43 @@ namespace Lab3.scripts
             Console.WriteLine("for playing. Goodbye!");
         }
 
-        //Leftovers from class
-        private void OnPointAcquired()
+        private void PrintText(string color, string text)
         {
-            string gainedMessage = "You gained a point!";
-            Console.WriteLine(gainedMessage);
+            switch (color)
+            {
+                case "red":
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(" ");
+                    Console.WriteLine(text);
+                    Console.WriteLine(" ");
+                    Console.ResetColor();
+                    break;
+                case "blue":
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine(" ");
+                    Console.WriteLine(text);
+                    Console.WriteLine(" ");
+                    Console.ResetColor();
+                    break;
+                case "green":
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(" ");
+                    Console.WriteLine(text);
+                    Console.WriteLine(" ");
+                    Console.ResetColor();
+                    break;
+                case "yellow":
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(" ");
+                    Console.WriteLine(text);
+                    Console.WriteLine(" ");
+                    Console.ResetColor();
+                    break;
+                // ... more cases
+                default:
+                    // Code to execute if no case matches
+                    break;
+            }
         }
-
-        public void PlayGame()
-        {
-            Console.WriteLine("Welcome to Die vs Die!");
-
-            OnPointAcquired();
-        }
-
-
     }
 }

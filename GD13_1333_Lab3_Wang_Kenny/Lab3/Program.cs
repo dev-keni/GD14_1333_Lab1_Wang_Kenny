@@ -8,7 +8,6 @@ namespace Lab3
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome, Kenny! September 17th, 2025");
-
             GameManager manager = new GameManager();
             manager.Play();
 

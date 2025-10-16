@@ -15,9 +15,21 @@ namespace Lab3.scripts
             //new random
             Random random = new Random();
 
-            if (input == "???")
+            if (input == "Revolver")
             {
-                input = "d"+random.Next(1,50);
+                input = "d6";
+            }
+            if (input == "MP5")
+            {
+                input = "d30";
+            }
+            if (input == "Shotgun")
+            {
+                input = "d20";
+            }
+            if (input == "Pipebomb")
+            {
+                input = "d" + random.Next(1, 50);
             }
 
             //remove "d" from the input string so it can be converted to int
