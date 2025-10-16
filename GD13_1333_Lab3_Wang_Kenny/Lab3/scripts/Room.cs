@@ -10,6 +10,7 @@ namespace Lab3.scripts
     {
         protected bool BeenHere = false;
         protected bool Encounter;
+        protected bool Searched = false;
         
         public void RoomDescription() 
         { 
@@ -18,7 +19,7 @@ namespace Lab3.scripts
 
         protected abstract void OnRoomEntered();
 
-        protected abstract void OnRoomSearched();
+        public abstract bool OnRoomSearched();
 
         public bool Enter()
         {
@@ -33,15 +34,6 @@ namespace Lab3.scripts
             }
         }                
 
-        public void OnRoomExit()
-        {
-            
-        }
-
-        public void Setup()
-        {
-
-        }
     }
 
     internal class EncounterRoom : Room
@@ -63,9 +55,10 @@ namespace Lab3.scripts
             
         }
         
-        protected override void OnRoomSearched()
+        public override bool OnRoomSearched()
         {
             Console.WriteLine("There is nothing here.");
+            return false;
         }
     }
 
@@ -77,10 +70,20 @@ namespace Lab3.scripts
             Console.WriteLine("There is no one in the room but it seems to be untouched since the outbreak.");
         }
         
-        protected override void OnRoomSearched()
+        public override bool OnRoomSearched()
         {
             //Add die to player inventory
-            Console.WriteLine("You look around for supplies. After a bit of searching you find...");
+            if (Searched == false)
+            {
+                Console.WriteLine("You look around for supplies. After a bit of searching you find...");
+                Searched = true;
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("You've already looked through everything here.");
+                return false;
+            }
         }
     }
 }

@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|e:\\ga3-1333\\gd14_1333_lab1_wang_kenny\\gd13_1333_lab3_wang_kenny\\lab3\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|solutionrelative:scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|e:\\ga3-1333\\gd14_1333_lab1_wang_kenny\\gd13_1333_lab3_wang_kenny\\lab3\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|solutionrelative:scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|e:\\ga3-1333\\gd14_1333_lab1_wang_kenny\\gd13_1333_lab3_wang_kenny\\lab3\\scripts\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|solutionrelative:scripts\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|e:\\ga3-1333\\gd14_1333_lab1_wang_kenny\\gd13_1333_lab3_wang_kenny\\lab3\\scripts\\dieroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|solutionrelative:scripts\\dieroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|e:\\ga3-1333\\gd14_1333_lab1_wang_kenny\\gd13_1333_lab3_wang_kenny\\lab3\\scripts\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|solutionrelative:scripts\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|e:\\ga3-1333\\gd14_1333_lab1_wang_kenny\\gd13_1333_lab3_wang_kenny\\lab3\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|solutionrelative:scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|e:\\ga3-1333\\gd14_1333_lab1_wang_kenny\\gd13_1333_lab3_wang_kenny\\lab3\\scripts\\dieroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|solutionrelative:scripts\\dieroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|e:\\ga3-1333\\gd14_1333_lab1_wang_kenny\\gd13_1333_lab3_wang_kenny\\lab3\\scripts\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|solutionrelative:scripts\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6BB74ABF-A9BB-4E0F-A12B-AEC06A4DF91D}|Lab3.csproj|e:\\ga3-1333\\gd14_1333_lab1_wang_kenny\\gd13_1333_lab3_wang_kenny\\lab3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,69 +34,69 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Items.cs",
               "DocumentMoniker": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\scripts\\Items.cs",
               "RelativeDocumentMoniker": "scripts\\Items.cs",
               "ToolTip": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\scripts\\Items.cs",
               "RelativeToolTip": "scripts\\Items.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-15T11:42:16.626Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Room.cs",
               "DocumentMoniker": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\scripts\\Room.cs",
               "RelativeDocumentMoniker": "scripts\\Room.cs",
               "ToolTip": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\scripts\\Room.cs",
               "RelativeToolTip": "scripts\\Room.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAgwA8AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T01:07:42.378Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "DieRoller.cs",
               "DocumentMoniker": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\scripts\\DieRoller.cs",
               "RelativeDocumentMoniker": "scripts\\DieRoller.cs",
               "ToolTip": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\scripts\\DieRoller.cs",
               "RelativeToolTip": "scripts\\DieRoller.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBgAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwBwAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-17T22:37:49.344Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Player.cs",
               "DocumentMoniker": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\scripts\\Player.cs",
               "RelativeDocumentMoniker": "scripts\\Player.cs",
               "ToolTip": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\scripts\\Player.cs",
               "RelativeToolTip": "scripts\\Player.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowCoAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAqwBMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-18T02:42:34.441Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GameManager.cs",
               "DocumentMoniker": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "scripts\\GameManager.cs",
               "ToolTip": "E:\\GA3-1333\\GD14_1333_Lab1_Wang_Kenny\\GD13_1333_Lab3_Wang_Kenny\\Lab3\\scripts\\GameManager.cs",
               "RelativeToolTip": "scripts\\GameManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-11T04:28:52.749Z",
               "EditorCaption": ""

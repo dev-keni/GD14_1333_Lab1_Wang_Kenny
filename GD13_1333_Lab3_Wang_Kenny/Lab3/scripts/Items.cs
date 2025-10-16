@@ -11,34 +11,48 @@ namespace Lab3.scripts
         protected string? itemName;
         protected int Damage;
 
-        protected abstract string ReturnItemName();
-        protected abstract int ReturnDamage();
+        public abstract string ReturnItemName();
+        public abstract int ReturnDamage();
 
     }
 
     internal class Revolver : Items
     {
-        protected override string ReturnItemName()
+        public override string ReturnItemName()
         {
             itemName = "Revolver";
             return itemName;
         }
-        protected override int ReturnDamage() 
+        public override int ReturnDamage() 
         {
-            Damage = 20;
+            Damage = 6;
             return Damage;
         }
         
     }
 
-    internal class MP5 : Items
+    internal class Shotgun : Items
     {
-        protected override string ReturnItemName()
+        public override string ReturnItemName()
         {
-            itemName = "Revolver";
+            itemName = "Shotgun";
             return itemName;
         }
-        protected override int ReturnDamage()
+        public override int ReturnDamage()
+        {
+            Damage = 10;
+            return Damage;
+        }
+    }
+
+    internal class MP5 : Items
+    {
+        public override string ReturnItemName()
+        {
+            itemName = "MP5";
+            return itemName;
+        }
+        public override int ReturnDamage()
         {
             Damage = 20;
             return Damage;
@@ -47,12 +61,12 @@ namespace Lab3.scripts
 
     internal class PipeBomb : Items
     {
-        protected override string ReturnItemName()
+        public override string ReturnItemName()
         {
-            itemName = "Revolver";
+            itemName = "Pipe Bomb";
             return itemName;
         }
-        protected override int ReturnDamage()
+        public override int ReturnDamage()
         {
             Damage = 20;
             return Damage;

@@ -23,17 +23,19 @@ namespace Lab3.scripts
         bool inGame = false;
         int PlayerResult, CPUResult;
         List<Player> TurnOrder = new List<Player>(2);
-        Room[,] mapGrid = new Room[3,3];
+        int mapSizeX;
+        Room[,]? mapGrid;
         Room? currentRoom;
         int currentX, currentY;
 
-        private void GenerateMap()
+        
+        private void GenerateMap() //Generate the map based on the given size
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < mapSizeX; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < mapSizeX; j++)
                 {
-                    int result = dieRoller.Roll("d2");
+                    int result = dieRoller.Roll(2);
                     if (result == 1)
                     {
                         mapGrid[i,j] = new EncounterRoom();
@@ -46,18 +48,18 @@ namespace Lab3.scripts
             }
         }
 
-        private void DisplayMap()
-        {
-
-        }
-
         public void Play()
         {
+            //Generate map and set variables
+            mapSizeX = 3;
+            mapGrid = new Room[mapSizeX, mapSizeX];
             GenerateMap();
             currentRoom = mapGrid[1,1];
             currentX = 1;
             currentY = 1;
             cpu.isBot = true;
+            //Generate a weapon for the player
+            player.GenerateItem();
             //Get player's username
             Console.WriteLine("\r\n♫.•°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫\r\n───▄▄▄▄▄▄\r\n─▄▀░░░░░░▀▄░██░██ █████ ██░░ ██░░ █████\r\n▐░▄▄▄░░▐▀▌░▌██▄██ ██▄▄▄ ██░░ ██░░ ██░██\r\n▐░░░░░░░░░░▌██▀██ ██▀▀▀ ██░░ ██░░ ██░██\r\n▐░░▀▄░░▄▀░░▌██░██ █████ ████ ████ █████\r\n─▀▄░░▀▀░░▄▀\r\n───▀▀▀▀▀▀---\r\n♫.•°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫°”˜˜”°•.♫");
             Console.WriteLine(" ");
@@ -111,22 +113,25 @@ namespace Lab3.scripts
             }
             else if (answer != null && answer == "search")
             {
-                PrintText("red", "Theres nothing here.");
-                //Make the Player object insert new item VIA Room.cs's OnRoomSearch, then match an item from Items.cs lmao
+                if (mapGrid[currentX, currentY].OnRoomSearched()) 
+                {
+                    player.GenerateItem();
+                }
                 Navigate();
             }
             else if (answer != null && answer == "inv")
             {
-                PrintText("yellow", "You looked in your backpack and you currently have: " + string.Join(", ", player.Inventory));
+                PrintText("yellow", "You looked in your backpack and you currently have: " + string.Join(", ", player.Inventory.Keys));
                 Navigate();
             }
         }
 
         private void CheckRoom(string dir, int increment)
         {
+            //Check to see if the room is real, if it is a battle room it will start the battle
             if (dir == "y")
             {
-                if (currentY + increment < 3 && currentY+increment >= 0) //HARDCODED INDEX!!! D:
+                if (currentY + increment < mapSizeX && currentY+increment >= 0)
                 {
                     currentY += increment;
                     currentRoom = mapGrid[currentX, currentY];
@@ -144,7 +149,7 @@ namespace Lab3.scripts
             }
             else if(dir == "x")
             {
-                if (currentX + increment < 3 && currentX + increment >= 0) //HARDCODED INDEX!!! D:
+                if (currentX + increment < mapSizeX && currentX + increment >= 0)
                 {
                     currentX += increment;
                     currentRoom = mapGrid[currentX, currentY];
@@ -185,7 +190,7 @@ namespace Lab3.scripts
                 }
 
             //roll a dice of 2, basically heads/tails. 1 is heads, 2 is tails
-                int result = dieRoller.Roll("d2");
+                int result = dieRoller.Roll(2);
                 if (result == 1)
                 {
                     choice = "Heads";
@@ -267,13 +272,12 @@ namespace Lab3.scripts
                 cpu.Score += 1;
                 Console.WriteLine("Bandit wins! They get 1 score! The score is now " + player.UserName + ": " + player.Score + " | CPU: " + cpu.Score);
             }
-            //If the score reaches 5 then end the game
-            if (player.Score == 5)
+            //If the score reaches 1 then end the battle
+            if (player.Score == 1)
             {
                 Console.WriteLine(player.UserName + " murdered the bandit!");
-                GameOver();
             }
-            else if (cpu.Score == 5)
+            else if (cpu.Score == 1)
             {
                 Console.WriteLine("The bandit kills you and you die.");
                 GameOver();
